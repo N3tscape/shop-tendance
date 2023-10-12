@@ -1,0 +1,113 @@
+{
+    "products": [
+      {
+        "id": 1,
+        "title": "Sneakers Trendy",
+        "description": "Chaussures de sport légères et confortables.",
+        "categories": ["Chaussures", "Sport"],
+        "basePrice": 70.00,
+        "salePrice": 55.00,
+        "imageUrl": "https://img.freepik.com/photos-gratuite/chaussure-sport-bleue-deliee-prete-action-generee-par-ia_188544-25546.jpg?w=1380&t=st=1697105043~exp=1697105643~hmac=cc665d1b4e43b9f351861a6582d33745651097e13e54936ae6254331580a9067"
+      },
+      {
+        "id": 2,
+        "title": "T-shirt Blanc Classique",
+        "description": "Un t-shirt blanc basique pour toutes les occasions.",
+        "categories": ["Vêtements", "Homme"],
+        "basePrice": 15.00,
+        "salePrice": 10.00,
+        "imageUrl": "https://img.freepik.com/photos-gratuite/t-shirt-blanc-bande-noire-haut_1340-42520.jpg?w=740&t=st=1697105173~exp=1697105773~hmac=bedfff8d9b7498a687441916f2fd27889c7d2cb721e27ca4174335f20b9f5539"
+      },
+      {
+        "id": 3,
+        "title": "Sac à main Élégant",
+        "description": "Sac à main spacieux en cuir véritable.",
+        "categories": ["Accessoires", "Femme"],
+        "basePrice": 120.00,
+        "salePrice": 90.00,
+        "imageUrl": "https://img.freepik.com/photos-gratuite/sac-belle-femme-elegance-mode-luxe_74190-4900.jpg?w=1380&t=st=1697105249~exp=1697105849~hmac=553ba26b6ae6670698b73b2a007d8f40d6c7704216cf076d47b483b21a612105"
+      },
+      {
+        "id": 4,
+        "title": "Montre de Luxe",
+        "description": "Montre-bracelet en or avec un design intemporel.",
+        "categories": ["Accessoires", "Unisexe"],
+        "basePrice": 300.00,
+        "salePrice": 250.00,
+        "imageUrl": "https://img.freepik.com/photos-gratuite/montre-elegante-chaine-argent-or-isolee_181624-27080.jpg?w=900&t=st=1697105380~exp=1697105980~hmac=ab3633cfb0db47dbd333db74808277496448fcbdb04e28cc38e09c8fad6360a9"
+      },
+      {
+        "id": 5,
+        "title": "Casquette Sportive",
+        "description": "Parfait pour protéger du soleil lors de vos activités extérieures.",
+        "categories": ["Accessoires", "Sport"],
+        "basePrice": 20.00,
+        "salePrice": 15.00,
+        "imageUrl":"https://img.freepik.com/psd-gratuit/cap-maquette_1310-495.jpg?w=1380&t=st=1697105431~exp=1697106031~hmac=eecfb036d55aa2564367e767dc772cd24fc96c94495b9084a7074baccc5280b7"
+      },
+      {
+        "id": 6,
+        "title": "Jean Slim Bleu",
+        "description": "Jean slim bleu, parfait pour un look décontracté.",
+        "categories": ["Vêtements", "Homme"],
+        "basePrice": 50.00,
+        "salePrice": 40.00,
+        "imageUrl":"https://img.freepik.com/photos-gratuite/jeans_1203-8094.jpg?w=826&t=st=1697105476~exp=1697106076~hmac=10d911230064cdca7c2f470d464cb18bfc4a286cf7cc9d06372d7ee0b41a377d"
+      },
+      {
+        "id": 7,
+        "title": "Robe d'Été Fleuri",
+        "description": "Légère et colorée, idéale pour les journées ensoleillées.",
+        "categories": ["Vêtements", "Femme"],
+        "basePrice": 60.00,
+        "salePrice": 45.00,
+        "imageUrl":"https://img.freepik.com/photos-gratuite/fille-bouclee-belle-robe_144627-10117.jpg?w=740&t=st=1697105509~exp=1697106109~hmac=b08a0100548ae9f820738506d84644a6549c7d5c48306666c58b046ef202f5d2"
+      },
+      {
+        "id": 8,
+        "title": "Short de Sport",
+        "description": "Confortable et respirant.",
+        "categories": ["Vêtements", "Sport"],
+        "basePrice": 30.00,
+        "salePrice": 20.00,
+        "imageUrl":"https://img.freepik.com/vecteurs-libre/concept-uniforme-football_52683-43144.jpg?w=826&t=st=1697105588~exp=1697106188~hmac=78979062a23f230e870fe357844d2f993d53aa4606835b999752d4f737263e02"
+      },
+      {
+        "id": 9,
+        "title": "Lunettes de Soleil",
+        "description": "Protection UV avec style.",
+        "categories": ["Accessoires", "Unisexe"],
+        "basePrice": 80.00,
+        "salePrice": 65.00,
+        "imageUrl":"https://img.freepik.com/photos-gratuite/femme-mince-appreciant-dans-endroit-exotique-joyeuse-dame-bronzee-debout-pres-palmiers-souriant_197531-21139.jpg?w=1380&t=st=1697105627~exp=1697106227~hmac=9c59bc207cde7e8014f3706233e189f77836ae8df3069ee4cb29d6d6bb66f4b5"
+      },
+      {
+        "id": 10,
+        "title": "Chaussures de Randonnée",
+        "description": "Robustes et imperméables.",
+        "categories": ["Chaussures", "Sport"],
+        "basePrice": 110.00,
+        "salePrice": 85.00,
+        "imageUrl": "https://img.freepik.com/photos-gratuite/chaussures-grimpantes-robustes_1385-641.jpg?w=740&t=st=1697105677~exp=1697106277~hmac=482078ba3ae7986cb5e2237caaeefbbb47432ed146c3004dd72da03d0f7cb1d1"
+      },
+      {
+        "id": 11,
+        "title": "Pull Chaud en Laine",
+        "description": "Idéal pour les saisons froides.",
+        "categories": ["Vêtements", "Homme"],
+        "basePrice": 70.00,
+        "salePrice": 55.00,
+        "imageUrl":"https://img.freepik.com/photos-gratuite/portrait-jolie-fille-adulte-aux-cheveux-boucles-roux-porter-pull-col-roule-vert-tirer-pull-son-visage-isole-mur-rose-pastel_295783-15304.jpg?w=1380&t=st=1697105701~exp=1697106301~hmac=1530b53ceccd4e51eeae1e0787bdc85b3dd6cef2f9260501e718fc8ba19d0de7"
+      },
+      {
+        "id": 12,
+        "title": "Bikini à Rayures",
+        "description": "Parfait pour la plage.",
+        "categories": ["Vêtements", "Femme"],
+        "basePrice": 40.00,
+        "salePrice": 30.00,
+        "imageUrl":"https://img.freepik.com/photos-gratuite/maillot-bain-fond-jaune-isole_1303-13545.jpg?w=1380&t=st=1697105745~exp=1697106345~hmac=ac0dbee6a124ac0f32e039be6d18b8df61a56e1294423f2765d1286da55c21da"
+      }
+    ]
+  }
+  
