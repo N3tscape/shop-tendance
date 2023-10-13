@@ -1,8 +1,8 @@
-import './App.css';
+import ProductTable from "./components/ProductTable";
 
 function App() {
   return <>
-    <h1 className='hello-world'>Hello world!</h1>;
+    <ProductTable />
   </>
 }
 

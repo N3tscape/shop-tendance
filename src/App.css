@@ -1,7 +1,0 @@
-@tailwind base;
-
-@layer base {
-  .hello-world {
-    @apply m-4 text-3xl font-bold underline;
-  }
-}
