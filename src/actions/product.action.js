@@ -20,14 +20,18 @@ export const addProduct = (data) => {
 
 export const getProducts = () => {
   return async (dispatch) => {
-    return await axios
-      .get("http://localhost:5000/products")
-      .then((response) => {
-        dispatch({
-          type: GET_PRODUCTS,
-          payload: response.data,
-        });
+    try {
+      const response = await axios.get("http://localhost:5000/products");
+      dispatch({
+        type: GET_PRODUCTS,
+        payload: response.data,
       });
+    } catch (error) {
+      console.log(
+        "Une erreur s'est produite lors de la récupération des données.",
+        error
+      );
+    }
   };
 };
 

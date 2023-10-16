@@ -16,7 +16,7 @@ export default function productReducer(state = initialState, action) {
     case UPDATA_PRODUCT:
       return state.map((product) => {
         if (product.id === action.payload.id) {
-          return { ...product, content: action.payload };
+          return { ...product, ...action.payload };
         } else {
           return product;
         }
