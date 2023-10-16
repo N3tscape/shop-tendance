@@ -1,8 +1,17 @@
-import { Typography, Tooltip, IconButton, Chip } from "@material-tailwind/react";
+import {
+  Typography,
+  Tooltip,
+  IconButton,
+  Chip,
+} from "@material-tailwind/react";
 import { EyeIcon, PencilIcon, TrashIcon } from "@heroicons/react/24/solid";
 import getCategoryColor from "../Utils/getCategoryColor";
+import { useDispatch } from "react-redux";
+import { deleteProduct } from "../actions/product.action";
 
 export default function ProductItem({ product }) {
+  const dispatch = useDispatch();
+
   return (
     <tr key={product.id} className="even:bg-blue-gray-50/50">
       <td className="p-4">
@@ -12,9 +21,13 @@ export default function ProductItem({ product }) {
       </td>
       <td className="p-4">
         <div className="flex gap-2">
-            {product.categories.map((category, index) => (
-                <Chip key={index} color={getCategoryColor(category)} value={category} />
-            ))}
+          {product.categories.map((category, index) => (
+            <Chip
+              key={index}
+              color={getCategoryColor(category)}
+              value={category}
+            />
+          ))}
         </div>
       </td>
       <td className="p-4">
@@ -41,7 +54,10 @@ export default function ProductItem({ product }) {
         </Tooltip>
 
         <Tooltip content="Supprimer">
-          <IconButton variant="text">
+          <IconButton
+            variant="text"
+            onClick={() => dispatch(deleteProduct(product.id))}
+          >
             <TrashIcon className="h-4 w-4" />
           </IconButton>
         </Tooltip>

@@ -1,19 +1,26 @@
-import React, { useEffect } from 'react';
-import { useDispatch, useSelector } from 'react-redux';
-import { getProducts } from '../actions/product.action';
+import { useSelector } from "react-redux";
 import { MagnifyingGlassIcon } from "@heroicons/react/24/outline";
 import { UserPlusIcon } from "@heroicons/react/24/solid";
-import { Card, CardHeader, Input, Typography, Button, CardBody, CardFooter } from "@material-tailwind/react";
-import ProductItem from './ProductItem';
+import {
+  Card,
+  CardHeader,
+  Input,
+  Typography,
+  Button,
+  CardBody,
+  CardFooter,
+} from "@material-tailwind/react";
+import ProductItem from "./ProductItem";
 
-const TABLE_HEAD = ["Désignation", "Catégories", "Prix de base", "Prix de vente", ""];
+const TABLE_HEAD = [
+  "Désignation",
+  "Catégories",
+  "Prix de base",
+  "Prix de vente",
+  "",
+];
 export default function ProductTable() {
-  const dispatch = useDispatch();
   const products = useSelector((state) => state.productReducer);
-
-  useEffect(() => {
-    dispatch(getProducts());
-  }, [dispatch]);
 
   return (
     <Card className="h-full w-full">
@@ -29,7 +36,8 @@ export default function ProductTable() {
           </div>
           <div className="flex shrink-0 flex-col gap-2 md:flex-row">
             <Button className="flex items-center gap-3" size="sm">
-              <UserPlusIcon strokeWidth={2} className="h-4 w-4" /> Ajouter un produit
+              <UserPlusIcon strokeWidth={2} className="h-4 w-4" /> Ajouter un
+              produit
             </Button>
             <div className="w-full md:w-72">
               <Input
@@ -50,7 +58,11 @@ export default function ProductTable() {
                   key={head}
                   className="border-y border-blue-gray-100 bg-blue-gray-50/50 p-4"
                 >
-                  <Typography variant="small" color="blue-gray" className="font-normal leading-none opacity-70">
+                  <Typography
+                    variant="small"
+                    color="blue-gray"
+                    className="font-normal leading-none opacity-70"
+                  >
                     {head}
                   </Typography>
                 </th>
@@ -59,7 +71,7 @@ export default function ProductTable() {
           </thead>
           <tbody>
             {products.map((product, index) => (
-              <ProductItem key={product.id || index} product={product} />
+              <ProductItem product={product} key={index} />
             ))}
           </tbody>
         </table>
