@@ -1,3 +1,5 @@
+import { useState } from "react";
+import ProductDetails from "./ProductDetails";
 import {
   Typography,
   Tooltip,
@@ -10,7 +12,16 @@ import { useDispatch } from "react-redux";
 import { deleteProduct } from "../actions/product.action";
 
 export default function ProductItem({ product }) {
+  const [isModalOpen, setIsModalOpen] = useState(false);
   const dispatch = useDispatch();
+
+  function openModal() {
+    setIsModalOpen(true);
+  }
+
+  function closeModal() {
+    setIsModalOpen(false);
+  }
 
   return (
     <tr key={product.id} className="even:bg-blue-gray-50/50">
@@ -42,7 +53,7 @@ export default function ProductItem({ product }) {
       </td>
       <td className="w-32">
         <Tooltip content="Voir">
-          <IconButton variant="text">
+          <IconButton variant="text" onClick={openModal}>
             <EyeIcon className="h-4 w-4" />
           </IconButton>
         </Tooltip>
@@ -62,6 +73,14 @@ export default function ProductItem({ product }) {
           </IconButton>
         </Tooltip>
       </td>
+
+      {isModalOpen && (
+        <ProductDetails
+          product={product}
+          isOpen={isModalOpen}
+          onClose={closeModal}
+        />
+      )}
     </tr>
   );
 }
