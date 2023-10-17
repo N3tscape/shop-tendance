@@ -26,6 +26,11 @@ export default function ProductTable() {
   const products = useSelector((state) => state.productReducer);
   const dispatch = useDispatch();
 
+  const [searchTerm, setSearchTerm] = useState("");
+  const filteredProducts = products.filter((product) =>
+    product.title.toLowerCase().includes(searchTerm.toLowerCase())
+  );
+
   const [isProductDialogOpen, setProductDialogOpen] = useState(false);
 
   const openProductDialog = () => {
@@ -80,6 +85,8 @@ export default function ProductTable() {
               <Input
                 label="Rechercher"
                 icon={<MagnifyingGlassIcon className="h-5 w-5" />}
+                value={searchTerm}
+                onChange={(e) => setSearchTerm(e.target.value)}
               />
             </div>
           </div>
@@ -107,7 +114,7 @@ export default function ProductTable() {
             </tr>
           </thead>
           <tbody>
-            {products.map((product, index) => (
+            {filteredProducts.map((product, index) => (
               <ProductItem product={product} key={index} />
             ))}
           </tbody>
@@ -116,7 +123,7 @@ export default function ProductTable() {
 
       <CardFooter className="flex items-center justify-start border-t border-blue-gray-50 p-4">
         <Typography variant="small" color="blue-gray" className="font-normal">
-          Nombre de produits : {products.length}
+          Nombre de produits : {filteredProducts.length}
         </Typography>
       </CardFooter>
     </Card>
