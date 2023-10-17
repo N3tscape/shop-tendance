@@ -26,6 +26,14 @@ const CHECK_CATEGORIES = [
   "Sport",
 ];
 
+/**
+ * Renders a product form component.
+ *
+ * @param {Object} isOpen - A boolean indicating whether the form is open or not.
+ * @param {Function} onClose - A function to close the form.
+ * @param {Function} onSubmit - A function to submit the form.
+ * @return {JSX.Element} The rendered product form component.
+ */
 export default function ProductForm({ isOpen, onClose, onSubmit }) {
   const [productData, setProductData] = useState({
     title: "",
@@ -42,6 +50,12 @@ export default function ProductForm({ isOpen, onClose, onSubmit }) {
   const [salePriceValidation, setSalePriceValidation] = useState("");
   const [imageValidation, setImageValidation] = useState("");
 
+  /**
+   * Handles the input change event.
+   *
+   * @param {Event} e - The input change event.
+   * @return {void}
+   */
   const handleInputChange = (e) => {
     const { name, value } = e.target;
     const parsedValue = value !== "" ? parseFloat(value) : 0;
@@ -61,12 +75,15 @@ export default function ProductForm({ isOpen, onClose, onSubmit }) {
     if (name === "basePrice") {
       setBasePriceValidation(validatePrice(parsedValue));
     }
+
     if (name === "salePrice") {
       setSalePriceValidation(validatePrice(parsedValue));
     }
+
     if (name === "title") {
       setTitleValidation(validateTitle(value));
     }
+
     if (name === "description") {
       setDescriptionValidation(validateDescription(value));
     }
@@ -76,20 +93,33 @@ export default function ProductForm({ isOpen, onClose, onSubmit }) {
     }
   };
 
+  /**
+   * Handles the change event of the checkbox.
+   *
+   * @param {object} e - The event object.
+   * @return {void} No return value.
+   */
   const handleCheckboxChange = (e) => {
     const { value } = e.target;
     const updatedCategories = [...productData.categories];
+
     if (updatedCategories.includes(value)) {
       updatedCategories.splice(updatedCategories.indexOf(value), 1);
     } else {
       updatedCategories.push(value);
     }
+
     setProductData({
       ...productData,
       categories: updatedCategories,
     });
   };
 
+  /**
+   * Handles the form submission based on the validation of the input fields.
+   *
+   * @return {void} - No return value
+   */
   const handleSubmit = () => {
     if (
       titleValidation === "success" &&
@@ -117,6 +147,7 @@ export default function ProductForm({ isOpen, onClose, onSubmit }) {
       <div>
         <DialogHeader>Ajouter un nouveau produit</DialogHeader>
       </div>
+
       <DialogBody>
         <div className="grid gap-6">
           <Input
@@ -128,6 +159,7 @@ export default function ProductForm({ isOpen, onClose, onSubmit }) {
             {...(titleValidation === "success" ? { success: true } : {})}
             {...(titleValidation === "error" ? { error: true } : {})}
           />
+
           <Textarea
             label="Description du produit"
             name="description"
@@ -136,6 +168,7 @@ export default function ProductForm({ isOpen, onClose, onSubmit }) {
             {...(descriptionValidation === "success" ? { success: true } : {})}
             {...(descriptionValidation === "error" ? { error: true } : {})}
           />
+
           <div className="grid gap-2 md:grid-cols-2">
             {CHECK_CATEGORIES.map((category) => (
               <Checkbox
@@ -147,6 +180,7 @@ export default function ProductForm({ isOpen, onClose, onSubmit }) {
               />
             ))}
           </div>
+
           <Input
             label="Prix de base"
             name="basePrice"
@@ -156,6 +190,7 @@ export default function ProductForm({ isOpen, onClose, onSubmit }) {
             {...(basePriceValidation === "success" ? { success: true } : {})}
             {...(basePriceValidation === "error" ? { error: true } : {})}
           />
+
           <Input
             label="Prix de vente"
             name="salePrice"
@@ -165,6 +200,7 @@ export default function ProductForm({ isOpen, onClose, onSubmit }) {
             {...(salePriceValidation === "success" ? { success: true } : {})}
             {...(salePriceValidation === "error" ? { error: true } : {})}
           />
+
           <Input
             label="Image URL"
             name="imageUrl"
@@ -177,10 +213,12 @@ export default function ProductForm({ isOpen, onClose, onSubmit }) {
           />
         </div>
       </DialogBody>
+
       <DialogFooter className="space-x-2">
         <Button variant="outlined" color="red" onClick={onClose}>
           Annuler
         </Button>
+
         <Button variant="gradient" color="green" onClick={handleSubmit}>
           Ajouter
         </Button>

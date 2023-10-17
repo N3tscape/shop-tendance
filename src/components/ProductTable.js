@@ -1,5 +1,10 @@
 import { useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
+
+import { addProduct } from "../actions/product.action";
+import ProductItem from "./ProductItem";
+import ProductForm from "./ProductForm";
+
 import { MagnifyingGlassIcon } from "@heroicons/react/24/outline";
 import { UserPlusIcon } from "@heroicons/react/24/solid";
 import {
@@ -11,9 +16,6 @@ import {
   CardBody,
   CardFooter,
 } from "@material-tailwind/react";
-import ProductItem from "./ProductItem";
-import ProductForm from "./ProductForm";
-import { addProduct } from "../actions/product.action";
 
 const TABLE_HEAD = [
   "Désignation",
@@ -22,6 +24,12 @@ const TABLE_HEAD = [
   "Prix de vente",
   "",
 ];
+
+/**
+ * Render a product table component.
+ *
+ * @return {ReactElement} The rendered component.
+ */
 export default function ProductTable() {
   const products = useSelector((state) => state.productReducer);
   const dispatch = useDispatch();
@@ -33,14 +41,30 @@ export default function ProductTable() {
 
   const [isProductDialogOpen, setProductDialogOpen] = useState(false);
 
+  /**
+   * Opens the product dialog.
+   *
+   * @return {void}
+   */
   const openProductDialog = () => {
     setProductDialogOpen(true);
   };
 
+  /**
+   * Closes the product dialog.
+   *
+   * @return {undefined} - No return value.
+   */
   const closeProductDialog = () => {
     setProductDialogOpen(false);
   };
 
+  /**
+   * Handles the submission of product data.
+   *
+   * @param {object} productData - The data of the product to be submitted.
+   * @return {Promise<void>} A promise that resolves when the product is added successfully.
+   */
   const handleProductSubmit = (productData) => {
     dispatch(addProduct(productData))
       .then(() => {
@@ -59,10 +83,12 @@ export default function ProductTable() {
             <Typography variant="h5" color="blue-gray">
               Liste des produits
             </Typography>
+
             <Typography color="gray" className="mt-1 font-normal">
               Informations relative à l’ensemble des produits
             </Typography>
           </div>
+
           <div className="flex shrink-0 flex-col gap-2 md:flex-row">
             <Button
               className="flex items-center gap-3"
@@ -113,6 +139,7 @@ export default function ProductTable() {
               ))}
             </tr>
           </thead>
+
           <tbody>
             {filteredProducts.map((product, index) => (
               <ProductItem product={product} key={index} />

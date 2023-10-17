@@ -1,24 +1,44 @@
 import { useState } from "react";
+import { useDispatch } from "react-redux";
+import { deleteProduct } from "../actions/product.action";
+
+import ProductDetails from "./ProductDetails";
+import getCategoryColor from "../Utils/getCategoryColor";
+
+import { EyeIcon, PencilIcon, TrashIcon } from "@heroicons/react/24/solid";
 import {
   Typography,
   Tooltip,
   IconButton,
   Chip,
 } from "@material-tailwind/react";
-import { EyeIcon, PencilIcon, TrashIcon } from "@heroicons/react/24/solid";
-import ProductDetails from "./ProductDetails";
-import getCategoryColor from "../Utils/getCategoryColor";
-import { useDispatch } from "react-redux";
-import { deleteProduct } from "../actions/product.action";
 
+/**
+ * Renders a single product item in a table row.
+ *
+ * @param {Object} product - The product object to be displayed.
+ * @return {JSX.Element} The JSX element representing the product item.
+ */
 export default function ProductItem({ product }) {
   const [isModalOpen, setIsModalOpen] = useState(false);
   const dispatch = useDispatch();
 
+  /**
+   * Opens a modal.
+   *
+   * @param {none} None - This function does not take any parameters.
+   * @return {none} None - This function does not return any value.
+   */
   function openModal() {
     setIsModalOpen(true);
   }
 
+  /**
+   * Closes the modal.
+   *
+   * @param {none}
+   * @return {none}
+   */
   function closeModal() {
     setIsModalOpen(false);
   }
@@ -30,6 +50,7 @@ export default function ProductItem({ product }) {
           {product.title}
         </Typography>
       </td>
+
       <td className="p-4">
         <div className="flex gap-2">
           {product.categories.map((category, index) => (
@@ -41,16 +62,19 @@ export default function ProductItem({ product }) {
           ))}
         </div>
       </td>
+
       <td className="p-4">
         <Typography variant="small" color="blue-gray" className="font-normal">
           {product.basePrice.toFixed(2)} €
         </Typography>
       </td>
+
       <td className="p-4">
         <Typography variant="small" color="blue-gray" className="font-normal">
           {product.salePrice.toFixed(2)} €
         </Typography>
       </td>
+
       <td className="w-32">
         <Tooltip content="Voir">
           <IconButton variant="text" onClick={openModal}>
@@ -59,7 +83,7 @@ export default function ProductItem({ product }) {
         </Tooltip>
 
         <Tooltip content="Modifier">
-          <IconButton variant="text">
+          <IconButton variant="text" disabled>
             <PencilIcon className="h-4 w-4" />
           </IconButton>
         </Tooltip>
