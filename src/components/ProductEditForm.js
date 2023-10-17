@@ -26,6 +26,12 @@ const CHECK_CATEGORIES = [
   "Sport",
 ];
 
+/**
+ * Validates the form data.
+ *
+ * @param {Object} data - The data to be validated.
+ * @return {boolean} Returns true if the form data is valid, false otherwise.
+ */
 export default function ProductEditForm({
   isOpen,
   onClose,
@@ -45,6 +51,12 @@ export default function ProductEditForm({
     validateForm(initialProductData);
   }, [initialProductData]);
 
+  /**
+   * Validates the form data.
+   *
+   * @param {Object} data - The data to be validated.
+   * @return {boolean} Returns true if the form data is valid, false otherwise.
+   */
   const validateForm = (data) => {
     const titleValid = validateTitle(data.title);
     const descriptionValid = validateDescription(data.description);
@@ -132,6 +144,13 @@ export default function ProductEditForm({
     });
   };
 
+  /**
+   * Handles the form submission based on the validation status of each field.
+   * If all fields pass validation, the product data is submitted.
+   * If any field fails validation, a console message is logged.
+   *
+   * @return {undefined} No return value.
+   */
   const handleSubmit = () => {
     if (
       titleValidation === "success" &&
