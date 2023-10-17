@@ -57,7 +57,7 @@ export const getProducts = () => {
  * @param {Object} data - The data of the product to be updated.
  * @return {Promise} A promise that resolves to the updated product.
  */
-export const updataProduct = (data) => {
+export const updateProduct = (data) => {
   return async (dispatch) => {
     return await axios
       .put(`http://localhost:5000/products/${data.id}`, data)

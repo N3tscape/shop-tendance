@@ -1,8 +1,9 @@
 import { useState } from "react";
 import { useDispatch } from "react-redux";
-import { deleteProduct } from "../actions/product.action";
+import { deleteProduct, updateProduct } from "../actions/product.action";
 
 import ProductDetails from "./ProductDetails";
+import ProductEditForm from "./ProductEditForm";
 import getCategoryColor from "../Utils/getCategoryColor";
 
 import { EyeIcon, PencilIcon, TrashIcon } from "@heroicons/react/24/solid";
@@ -22,6 +23,21 @@ import {
 export default function ProductItem({ product }) {
   const [isModalOpen, setIsModalOpen] = useState(false);
   const dispatch = useDispatch();
+
+  const [isEditFormOpen, setEditFormOpen] = useState(false);
+
+  const openEditForm = () => {
+    setEditFormOpen(true);
+  };
+
+  const closeEditForm = () => {
+    setEditFormOpen(false);
+  };
+
+  const handleEditProduct = (editedProductData) => {
+    dispatch(updateProduct(editedProductData));
+    closeEditForm();
+  };
 
   /**
    * Opens a modal.
@@ -83,10 +99,19 @@ export default function ProductItem({ product }) {
         </Tooltip>
 
         <Tooltip content="Modifier">
-          <IconButton variant="text" disabled>
+          <IconButton variant="text" onClick={openEditForm}>
             <PencilIcon className="h-4 w-4" />
           </IconButton>
         </Tooltip>
+
+        {isEditFormOpen && (
+          <ProductEditForm
+            isOpen={isEditFormOpen}
+            onClose={closeEditForm}
+            onSubmit={handleEditProduct}
+            initialProductData={product}
+          />
+        )}
 
         <Tooltip content="Supprimer">
           <IconButton
