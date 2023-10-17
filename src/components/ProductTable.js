@@ -1,4 +1,5 @@
-import { useSelector } from "react-redux";
+import { useState } from "react";
+import { useDispatch, useSelector } from "react-redux";
 import { MagnifyingGlassIcon } from "@heroicons/react/24/outline";
 import { UserPlusIcon } from "@heroicons/react/24/solid";
 import {
@@ -11,6 +12,8 @@ import {
   CardFooter,
 } from "@material-tailwind/react";
 import ProductItem from "./ProductItem";
+import ProductForm from "./ProductForm";
+import { addProduct } from "../actions/product.action";
 
 const TABLE_HEAD = [
   "Désignation",
@@ -21,6 +24,27 @@ const TABLE_HEAD = [
 ];
 export default function ProductTable() {
   const products = useSelector((state) => state.productReducer);
+  const dispatch = useDispatch();
+
+  const [isProductDialogOpen, setProductDialogOpen] = useState(false);
+
+  const openProductDialog = () => {
+    setProductDialogOpen(true);
+  };
+
+  const closeProductDialog = () => {
+    setProductDialogOpen(false);
+  };
+
+  const handleProductSubmit = (productData) => {
+    dispatch(addProduct(productData))
+      .then(() => {
+        closeProductDialog();
+      })
+      .catch((error) => {
+        console.error("Erreur lors de l'ajout du produit :", error);
+      });
+  };
 
   return (
     <Card className="h-full w-full">
@@ -35,10 +59,23 @@ export default function ProductTable() {
             </Typography>
           </div>
           <div className="flex shrink-0 flex-col gap-2 md:flex-row">
-            <Button className="flex items-center gap-3" size="sm">
+            <Button
+              className="flex items-center gap-3"
+              size="sm"
+              onClick={openProductDialog}
+            >
               <UserPlusIcon strokeWidth={2} className="h-4 w-4" /> Ajouter un
               produit
             </Button>
+
+            {isProductDialogOpen && (
+              <ProductForm
+                isOpen={isProductDialogOpen}
+                onClose={closeProductDialog}
+                onSubmit={handleProductSubmit}
+              />
+            )}
+
             <div className="w-full md:w-72">
               <Input
                 label="Rechercher"

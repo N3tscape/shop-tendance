@@ -1,5 +1,4 @@
 import { useState } from "react";
-import ProductDetails from "./ProductDetails";
 import {
   Typography,
   Tooltip,
@@ -7,6 +6,7 @@ import {
   Chip,
 } from "@material-tailwind/react";
 import { EyeIcon, PencilIcon, TrashIcon } from "@heroicons/react/24/solid";
+import ProductDetails from "./ProductDetails";
 import getCategoryColor from "../Utils/getCategoryColor";
 import { useDispatch } from "react-redux";
 import { deleteProduct } from "../actions/product.action";
